@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Service service = new Service();
+        Service<Human, HumanDTO> service = new Service<>();
 
         System.out.println("Получение одной сущности из репозитория:");
         HumanDTO singleHuman = service.getById(0);

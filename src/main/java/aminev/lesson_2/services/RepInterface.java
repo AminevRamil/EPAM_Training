@@ -10,6 +10,5 @@ public interface RepInterface<T extends Human> {
     void add(T t);
     void remove(T t);
     void addAll(Collection<T> c);
-    int size();
 
 }
