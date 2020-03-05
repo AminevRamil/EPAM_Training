@@ -24,6 +24,5 @@ public class Main {
 
         System.out.println("Добавление списка сущностей (DTO) в репозиторий");
         service.addAllToRepository(list);
-
     }
 }
