@@ -2,7 +2,6 @@ package aminev.lesson_2.services;
 
 import aminev.lesson_2.Human;
 import aminev.lesson_2.Human.Address;
-import aminev.lesson_2.dto.AddressDTO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,7 +17,8 @@ public class RepService<T extends Human> implements RepInterface<T> {
 
     @Override
     public T get(int id) {
-        return db.get(id);
+        if (id >= db.size()) return null;
+        else return db.get(id);
     }
 
     @Override
