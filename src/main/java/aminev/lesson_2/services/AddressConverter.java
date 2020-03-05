@@ -4,10 +4,10 @@ import aminev.lesson_2.Human;
 import aminev.lesson_2.dto.AddressDTO;
 
 public class AddressConverter{
-    AddressDTO getDTO(Human.Address address){
+    AddressDTO convert(Human.Address address){
         return new AddressDTO(address.getCountry(), address.getCity(), address.getStreet(), address.getFlat());
     }
-    Human.Address getDomain(AddressDTO address){
+    Human.Address convert(AddressDTO address){
         return new Human.Address(address.getCountry(), address.getCity(), address.getStreet(), address.getFlat());
     }
 }

@@ -12,11 +12,11 @@ public final class HumanConverter {
     }
 
     public HumanDTO toDTO(Human human) {
-        return new HumanDTO(human.getId(), human.getName(), human.getBirthday(), adConv.getDTO(human.getAddress()));
+        return new HumanDTO(human.getId(), human.getName(), human.getBirthday(), adConv.convert(human.getAddress()));
     }
 
     public Human toEntity(HumanDTO dto){
-        return new Human(dto.getId(), dto.getName(), dto.getBirthday(), adConv.getDomain(dto.getAddress()));
+        return new Human(dto.getId(), dto.getName(), dto.getBirthday(), adConv.convert(dto.getAddress()));
     }
 
 }

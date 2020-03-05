@@ -16,18 +16,18 @@ public class Service<ENTITY extends Human, DTO extends HumanDTO> {
     }
 
     public DTO getById(int id){
-        HumanDTO dto = converter.toDTO(repository.get());
+        HumanDTO dto = converter.toDTO(repository.find());
         dto.setId(id);
         return (DTO)dto;
     }
 
-    public void addToRepository(DTO dto){
-        repository.add((ENTITY)converter.toEntity(dto));
+    public void save(DTO dto){
+        repository.save((ENTITY)converter.toEntity(dto));
     }
 
     public void addAllToRepository(Collection<HumanDTO> humanDtoCollection) {
         for (HumanDTO dto: humanDtoCollection) {
-            repository.add((ENTITY)converter.toEntity(dto));
+            repository.save((ENTITY)converter.toEntity(dto));
         }
     }
 }

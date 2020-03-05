@@ -1,9 +1,7 @@
 import aminev.lesson_2.Human;
 import aminev.lesson_2.dto.HumanDTO;
-import aminev.lesson_2.services.Repository;
 import aminev.lesson_2.services.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class Main {
         System.out.println(singleHuman);
 
         System.out.println("Добавление одной сущности (DTO) в репозиторий");
-        service.addToRepository(singleHuman);
+        service.save(singleHuman);
 
         List<HumanDTO> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
