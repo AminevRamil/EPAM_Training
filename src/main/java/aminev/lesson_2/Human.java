@@ -17,8 +17,15 @@ public class Human {
     private LocalDate regDate;
     // Практические данные
     private String name;
-    LocalDate birthday;
-    Address address;
+    private LocalDate birthday;
+    private Address address;
+
+    public Human (int id, String name, LocalDate birthday, Address address){
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+        this.address = address;
+    }
 
     @Data
     @AllArgsConstructor

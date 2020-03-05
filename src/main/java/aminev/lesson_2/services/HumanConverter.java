@@ -5,20 +5,18 @@ import aminev.lesson_2.dto.HumanDTO;
 
 public final class HumanConverter {
 
-    private RepService<Human> db;
     private AddressConverter adConv;
 
-    public HumanConverter(RepService<Human> db){
-        this.db = db;
+    public HumanConverter(){
         adConv = new AddressConverter();
     }
 
-    public HumanDTO getDTO(Human human) {
+    public HumanDTO toDTO(Human human) {
         return new HumanDTO(human.getId(), human.getName(), human.getBirthday(), adConv.getDTO(human.getAddress()));
     }
 
-    public Human getDomainEntity(HumanDTO dto){
-        return db.get(dto.getId());
+    public Human toEntity(HumanDTO dto){
+        return new Human(dto.getId(), dto.getName(), dto.getBirthday(), adConv.getDomain(dto.getAddress()));
     }
 
 }
