@@ -1,54 +1,21 @@
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Задание 1
+
         List<Human> list = new ArrayList<>();
-        makeHumanList(list);
-        System.out.printf("ArrayList людей (%d):\n", list.size());
-        for (Human human : list) {
-            System.out.println(human);
-        }
-        // Задание 2
-        System.out.println("Дубли:");
-        for (int i = 0; i < list.size() - 1; i++) {
-            for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i).equals(list.get(j))) {
-                    System.out.println(list.get(i));
-                    list.remove(list.get(i)); // Удаление дублей для задания 3
-                }
-            }
-        }
-        // Задание 3
-        System.out.printf("ArrayList без дублей (%d):\n", list.size());
-        for (Human human : list) {
-            System.out.println(human);
-        }
-        // Задание 4
-        list.sort(new Human.NameComparator());
-        System.out.println("ArrayList сортированный по ФИО: ");
-        for (Human human : list) {
-            System.out.println(human);
-        }
-        // Задание 5
-        list.sort(new Human.AgeComparator());
-        System.out.println("ArrayList сортированный по возрасту: ");
-        for (Human human : list) {
-            System.out.println(human);
-        }
-        // Задание 6
-        list.sort(new Human.AgeComparator());
-        System.out.println("ArrayList сортированный по возрасту: ");
-        for (Human human : list) {
-            System.out.println(human);
-        }
+        fillHumanList(list);
+        task1(list);
+        task2(list);
+        task3(list);
+        task4(list);
+        task5(list);
+        task6(list);
     }
 
-    static void makeHumanList(List<Human> list) {
+    static void fillHumanList(List<Human> list) {
         Human.Address[] addresses = new Human.Address[10];
         addresses[0] = new Human.Address("Russia", "Tol'yatti", "Topolinaya", 15);
         addresses[1] = new Human.Address("Russia", "Toggliatti", "Lenina", 189);
@@ -70,5 +37,61 @@ public class Main {
         list.add(new Human("Chong F.O.", 23, addresses[7]));
         list.add(new Human("Chong F.O.", 23, addresses[8]));
         list.add(new Human("Baggetue F.O.", 38, addresses[9]));
+    }
+
+    static void task1(List<Human> list) {
+        System.out.printf("ArrayList людей (%d):\n", list.size());
+        for (Human human : list) {
+            System.out.println(human);
+        }
+    }
+
+    static void task2(List<Human> list) {
+        System.out.println("Дубли:");
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    System.out.println(list.get(i));
+                }
+            }
+        }
+    }
+
+    static void task3(List<Human> list) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    list.remove(list.get(i));
+                }
+            }
+        }
+        System.out.printf("ArrayList без дублей (%d):\n", list.size());
+        for (Human human : list) {
+            System.out.println(human);
+        }
+    }
+
+    static void task4(List<Human> list) {
+        list.sort(new NameComparator());
+        System.out.println("ArrayList сортированный по ФИО: ");
+        for (Human human : list) {
+            System.out.println(human);
+        }
+    }
+
+    static void task5(List<Human> list) {
+        list.sort(new AgeComparator());
+        System.out.println("ArrayList сортированный по возрасту: ");
+        for (Human human : list) {
+            System.out.println(human);
+        }
+    }
+
+    static void task6(List<Human> list) {
+        list.sort(new AddressComparator());
+        System.out.println("ArrayList сортированный по адресу: ");
+        for (Human human : list) {
+            System.out.println(human);
+        }
     }
 }
