@@ -1,7 +1,5 @@
 import lombok.*;
 
-import java.util.Comparator;
-
 @Data
 @ToString
 @EqualsAndHashCode

@@ -1,10 +1,11 @@
 
-import java.util.ArrayList;
-import java.util.List;
+import sun.reflect.generics.tree.Tree;
+
+import javax.jws.soap.SOAPBinding;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
         List<Human> list = new ArrayList<>();
         fillHumanList(list);
         task1(list);
@@ -13,6 +14,10 @@ public class Main {
         task4(list);
         task5(list);
         task6(list);
+        task8();
+        task9();
+        task10();
+        task11();
     }
 
     static void fillHumanList(List<Human> list) {
@@ -92,6 +97,64 @@ public class Main {
         System.out.println("ArrayList сортированный по адресу: ");
         for (Human human : list) {
             System.out.println(human);
+        }
+    }
+
+    static void task8(){
+        User user = new User("Jack", UserRoles.ADMIN);
+        String userName = user.getName();
+        String userRoleName = User.rolesVisibleNames.get(user.getRole());
+        String userRoleDescription =  User.rolesDescriptions.get(user.getRole());
+        System.out.printf("Привет, %s. Твоя роль - %s. Твоя задача: %s\n", userName, userRoleName, userRoleDescription); 
+    }
+
+    static void task9(){
+        System.out.println("До сортировки по ключу:");
+        HashMap<Integer, Double> map = new HashMap<>();
+        int key;
+        double value;
+        for (int i = 0; i < 10; i++) {
+            key = (int)(Math.random()*100);
+            value = Math.random()*100;
+            System.out.printf("%d\t=\t%.4f\n", key, value);
+            map.put(key, value);
+
+        }
+        System.out.println("После сортировки по ключу:");
+        TreeSet<Map.Entry<Integer, Double>> keySortedSet = new TreeSet<>(new KeyComparator<>());
+        keySortedSet.addAll(map.entrySet());
+        for (Map.Entry<Integer, Double> entry: keySortedSet) {
+            System.out.printf("%d\t=\t%.4f\n", entry.getKey(), entry.getValue());
+        }
+    }
+
+    static void task10(){
+        System.out.println("До сортировки по значению:");
+        HashMap<Integer, Double> map = new HashMap<>();
+        int key;
+        double value;
+        for (int i = 0; i < 10; i++) {
+            key = (int)(Math.random()*100);
+            value = Math.random()*100;
+            System.out.printf("%d\t=\t%.4f\n", key, value);
+            map.put(key, value);
+        }
+        System.out.println("После сортировки по значению:");
+        TreeSet<Map.Entry<Integer, Double>> ValueSortedSet = new TreeSet<>(new ValueComparator<>());
+        ValueSortedSet.addAll(map.entrySet());
+        for (Map.Entry<Integer, Double> entry: ValueSortedSet) {
+            System.out.printf("%d\t=\t%.4f\n", entry.getKey(), entry.getValue());
+        }
+    }
+
+    static void task11(){
+        System.out.println("LinkedList со случайными числами:");
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        for (int i = 0; i < 10; i++) {
+            linkedList.add((int)(Math.random()*100));
+        }
+        for (Integer integer: linkedList) {
+            System.out.printf("linkedList[%d]=%-3d\n", linkedList.indexOf(integer), integer);
         }
     }
 }
