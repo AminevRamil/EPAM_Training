@@ -1,11 +1,13 @@
 package aminev.lesson_2.services;
 
 import aminev.lesson_2.Human;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.util.Collection;
 
-public class Repository<ENTITY extends Human> implements RepInterface<ENTITY> {
+@Slf4j
+public class Repository<ENTITY extends Human> implements RepInterface<ENTITY>{
 
     public Repository() {
 
@@ -13,6 +15,7 @@ public class Repository<ENTITY extends Human> implements RepInterface<ENTITY> {
 
     @Override
     public ENTITY find() {
+        log.info("Поиск сущности в репозитории");
         //Заполнение базы данных
         String names[] = {"Jonathan", "Joseph", "Jotaro", "Josuke",
                 "Joruno", "Jolyne", "Johnny", "David", "Jack", "George"};
@@ -35,23 +38,27 @@ public class Repository<ENTITY extends Human> implements RepInterface<ENTITY> {
                 cities[(int) (Math.random() * cities.length)],
                 streets[(int) (Math.random() * streets.length)],
                 (int) (Math.random() * 200) + 1);
-
-        return (ENTITY)(new Human(id, rating, regDate, name, birthDate, address));
+        ENTITY entity = (ENTITY)(new Human(id, rating, regDate, name, birthDate, address));
+        log.info("Найденная сущность: " + entity);
+        return entity;
     }
 
     @Override
     public void save(ENTITY h) {
-        System.out.printf("Добавление: %s\n", h);
+        //System.out.printf("Добавление: %s\n", h);
+        log.info("Сохранение сущности в репозиторий: " + h);
     }
 
     @Override
     public void remove(Human human) {
-        System.out.printf("Удаление: %s\n", human);
+        //System.out.printf("Удаление: %s\n", human);
+        log.info("Удаление сущности из репозитория: " + human);
     }
 
     @Override
     public void saveAll(Collection<ENTITY> collection) {
-        System.out.printf("Добавление %d сущностей в репозиторий\n", collection.size());
+        log.info("Добавление " + collection.size() + " сущностей в репозиторий");
+
         for (ENTITY h : collection) {
             this.save(h);
         }

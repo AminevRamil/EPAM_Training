@@ -1,10 +1,15 @@
 import aminev.lesson_2.Human;
 import aminev.lesson_2.dto.HumanDTO;
+import aminev.lesson_2.exceptions.ConverterException;
+import aminev.lesson_2.exceptions.ServiceException;
+import aminev.lesson_2.services.HumanConverter;
 import aminev.lesson_2.services.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class Main {
     public static void main(String[] args) {
 
@@ -24,5 +29,23 @@ public class Main {
 
         System.out.println("Добавление списка сущностей (DTO) в репозиторий");
         service.addAllToRepository(list);
+
+        System.out.println("-----Lesson 4-----\n----Exceptions----");
+        try {
+            service.getById(11);
+        } catch (ServiceException e){
+            log.error(e.getMessage());
+        }
+        try {
+            service.save(null);
+        } catch (NullPointerException npe){
+            log.error(npe.getMessage());
+        }
+        try {
+            HumanConverter conv = new HumanConverter();
+            conv.toDTO(null);
+        } catch (ConverterException ce) {
+            log.error(ce.getMessage());
+        }
     }
 }
