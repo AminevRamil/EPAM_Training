@@ -39,25 +39,23 @@ public class Repository<ENTITY extends Human> implements RepInterface<ENTITY>{
                 streets[(int) (Math.random() * streets.length)],
                 (int) (Math.random() * 200) + 1);
         ENTITY entity = (ENTITY)(new Human(id, rating, regDate, name, birthDate, address));
-        log.info("Найденная сущность: " + entity);
+        log.info("Найденная сущность: {}", entity);
         return entity;
     }
 
     @Override
     public void save(ENTITY h) {
-        //System.out.printf("Добавление: %s\n", h);
-        log.info("Сохранение сущности в репозиторий: " + h);
+        log.info("Сохранение сущности в репозиторий: {}", h);
     }
 
     @Override
     public void remove(Human human) {
-        //System.out.printf("Удаление: %s\n", human);
-        log.info("Удаление сущности из репозитория: " + human);
+        log.info("Удаление сущности из репозитория: {}", human);
     }
 
     @Override
     public void saveAll(Collection<ENTITY> collection) {
-        log.info("Добавление " + collection.size() + " сущностей в репозиторий");
+        log.info("Добавление {} сущностей в репозиторий", collection.size());
 
         for (ENTITY h : collection) {
             this.save(h);
