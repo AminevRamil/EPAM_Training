@@ -1,6 +1,7 @@
 package aminev.handlers;
 
 import aminev.util.CommandException;
+import aminev.util.MyFilePrinter;
 import aminev.util.MyFileReader;
 import aminev.util.WrongCommandException;
 
@@ -10,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class PrintCommand implements CommandHandler {
 
-    Pattern pattern = Pattern.compile("");
+    Pattern pattern;
 
     @Override
     public void hande(String command) throws CommandException, WrongCommandException {
@@ -26,16 +27,8 @@ public class PrintCommand implements CommandHandler {
         }
         if (hasLineNumber && lineNumber == 0) throw new CommandException("Нулевой строки не существует");
         String fileName = scanner.next();
+        if (hasLineNumber) MyFilePrinter.printLineFromFile(fileName, lineNumber);
+        else MyFilePrinter.printFile(fileName);
 
-        List<String> lines = MyFileReader.parseFileToLines(fileName);
-        if (hasLineNumber){
-            if (lineNumber > lines.size()) throw new CommandException("Запрос несуществующей строки");
-            System.out.println(lines.get(lineNumber-1));
-        } else {
-            System.out.println("Содержимое файла:");
-            for (String line : lines) {
-                System.out.println(line);
-            }
-        }
     }
 }
