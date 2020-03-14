@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Аппендер для файла-->
+    <appender name="FILE-AUDIT" class="ch.qos.logback.core.FileAppender">
+        <file>logs\lesson5.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+    <!-- Логгер для файла-->
+    <logger name="aminev" level="info" additivity="false">
+        <appender-ref ref="FILE-AUDIT"/>
+    </logger>
+
+
+
+    <root level="error">
+        <appender-ref ref="FILE-AUDIT"/>
+    </root>
+</configuration>
