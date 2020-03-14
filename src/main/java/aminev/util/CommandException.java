@@ -1,6 +1,6 @@
 package aminev.util;
 
-public class CommandException extends Exception {
+public class CommandException extends RuntimeException {
     public CommandException(String message){
         super(message);
     }
