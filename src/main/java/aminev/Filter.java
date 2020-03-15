@@ -33,7 +33,7 @@ public class Filter {
             Scanner scanner = new Scanner(command);
             scanner.useDelimiter(" ");
             CommandsTypes type = stringCommandsTypesHashMap.get(scanner.next());
-            commandsTypesCommandHandlerHashMap.get(type).hande(command);
+            commandsTypesCommandHandlerHashMap.get(type).handle(command);
         } else {
             throw new WrongCommandException("Комманда не распознана");
         }

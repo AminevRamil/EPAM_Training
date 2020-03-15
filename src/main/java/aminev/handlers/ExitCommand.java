@@ -5,7 +5,7 @@ import aminev.util.WrongCommandException;
 
 public class ExitCommand implements CommandHandler {
     @Override
-    public void hande(String command) throws WrongCommandException {
+    public void handle(String command) throws WrongCommandException {
         System.exit(0);
     }
 }
