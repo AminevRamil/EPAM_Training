@@ -15,7 +15,7 @@ public class PrintCommand implements CommandHandler {
 
     @Override
     public void handle(String command) throws CommandException, WrongCommandException {
-        pattern = Pattern.compile("^(print) *[\\d]{0,5} *([\\w]+[\\w.]*)");
+        pattern = Pattern.compile("^(print)( +[\\d])? +([\\w]+[\\w.]*)");
         if (!pattern.matcher(command).matches()) throw new WrongCommandException("Команда print написана неверно");
         Scanner scanner = new Scanner(command);
         scanner.next();

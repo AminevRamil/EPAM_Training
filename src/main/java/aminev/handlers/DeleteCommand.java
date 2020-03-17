@@ -14,7 +14,7 @@ public class DeleteCommand implements CommandHandler {
 
     @Override
     public void handle(String command) throws CommandException, WrongCommandException {
-        pattern = Pattern.compile("^(delete) *[\\d]* *([\\w]+[\\w.]*)$");
+        pattern = Pattern.compile("^(delete)( +[\\d]*)? +([\\w]+[\\w.]*)$");
         if (!pattern.matcher(command).matches()) throw new WrongCommandException("Команда delete написана неверно");
         Scanner scanner = new Scanner(command);
         scanner.next();

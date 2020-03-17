@@ -17,7 +17,7 @@ public class AddCommand implements CommandHandler {
 
     @Override
     public void handle(String command) throws CommandException, WrongCommandException {
-        pattern = Pattern.compile("^(add) *[\\d]* *([\\w]+[\\w.]*) +(\"[\\w ]*\")?$");
+        pattern = Pattern.compile("^(add)( +[\\d]*)? +([\\w]+[\\w.]*) +(\"[\\w ]*\")?$");
         if (!pattern.matcher(command).matches()) throw new WrongCommandException("Команда add написана неверно");
         Scanner scanner = new Scanner(command);
         scanner.next();

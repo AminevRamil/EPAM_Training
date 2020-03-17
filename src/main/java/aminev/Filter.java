@@ -14,7 +14,7 @@ public class Filter {
     HashMap<CommandsTypes, CommandHandler> commandsTypesCommandHandlerHashMap;
     Pattern pattern;
     Filter(){
-        pattern = Pattern.compile("(\\b(add|print|delete)\\b *[\\d]* *([\\w]+[\\w.]*) *(\"[\\w ]*\")?)|(exit)|(help)");
+        pattern = Pattern.compile("(\\b(add|print|delete)\\b( +[\\d]*)? +([\\w]+[\\w.]*) +(\"[\\w ]*\")?)|(exit)|(help)");
         stringCommandsTypesHashMap = new HashMap<>();
         stringCommandsTypesHashMap.put("add", CommandsTypes.ADD);
         stringCommandsTypesHashMap.put("exit", CommandsTypes.EXIT);
