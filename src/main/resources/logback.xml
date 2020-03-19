@@ -22,7 +22,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.epam.aminev.part1.MyDOMParser" level="info" additivity="false">
+    <logger name="com.epam.aminev.part1.MyDomParser" level="info" additivity="false">
         <appender-ref ref="XML-Appender-DOM"/>
     </logger>
 

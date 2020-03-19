@@ -10,7 +10,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 
 @Slf4j
-public class MyDOMParser {
+public class MyDomParser {
 
     public void parse(String path) {
         DOMParser domParser = new DOMParser();
