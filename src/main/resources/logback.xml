@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="FILE-AUDIT" class="ch.qos.logback.core.FileAppender">
+        <file>logs\lesson6.log</file>
+        <append>false</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <!-- Аппендер для XML парсера по модели DOM -->
+    <appender name="XML-Appender-DOM" class="ch.qos.logback.core.FileAppender">
+        <file>logs\plant_catalog_DOM.xml</file>
+        <append>false</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.epam.aminev.part1.MyDomParser" level="info" additivity="false">
+        <appender-ref ref="XML-Appender-DOM"/>
+    </logger>
+
+    <!-- Аппендер для XML парсера по ~модели SAX -->
+    <appender name="XML-Appender-SAX" class="ch.qos.logback.core.FileAppender">
+        <file>logs\plant_catalog_SAX.xml</file>
+        <append>false</append>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.epam.aminev.part1.MyStAXParser" level="info" additivity="false">
+        <appender-ref ref="XML-Appender-SAX"/>
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="FILE-AUDIT"/>
+    </root>
+</configuration>
