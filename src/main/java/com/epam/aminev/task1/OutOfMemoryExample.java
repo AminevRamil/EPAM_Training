@@ -15,7 +15,6 @@ public class OutOfMemoryExample {
             }
         } catch (OutOfMemoryError e){
             log.error("Поймана ошибка " + e.toString());
-            e.printStackTrace();
             System.exit(-1);
         }
     }

@@ -14,7 +14,6 @@ public class Main {
             System.out.println(obj);
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
             log.error(e.getMessage());
-            e.printStackTrace();
         }
     }
 }

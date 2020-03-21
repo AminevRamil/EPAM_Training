@@ -1,7 +1,10 @@
 package com.epam.aminev.task3;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.*;
 
+@Slf4j
 public class CustomClassLoader extends ClassLoader {
 
     private String classPath;
@@ -16,9 +19,8 @@ public class CustomClassLoader extends ClassLoader {
         try {
             byte[] bytes = fetchClassFromFS(classPath + className + ".class");
             return defineClass(className, bytes, 0, bytes.length);
-        } catch (FileNotFoundException e) {
-            return super.findClass(className);
         } catch (IOException e) {
+            log.error(e.getMessage());
             return super.findClass(className);
         }
     }
@@ -27,6 +29,7 @@ public class CustomClassLoader extends ClassLoader {
         InputStream inputStream = new FileInputStream(new File(path));
         long length = new File(path).length();
         if (length > Integer.MAX_VALUE) {
+            throw new IOException("File is too big");
         }
         byte[] bytes = new byte[(int) length];
         int offset = 0;

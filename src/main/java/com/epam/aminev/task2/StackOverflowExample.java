@@ -9,7 +9,6 @@ public class StackOverflowExample {
             long maxDeepLevel = recursive(0L);
         } catch (StackOverflowError e) {
             log.error("Зафиксирована ошибка  " + e.toString());
-            e.printStackTrace();
             System.exit(-1);
         }
     }
