@@ -1,4 +1,4 @@
-package aminev.handlers;
+package com.epam.aminev.handlers;
 
 /**
  * Enumeration of existing commands

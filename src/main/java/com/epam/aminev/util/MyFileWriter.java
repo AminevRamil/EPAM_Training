@@ -1,4 +1,4 @@
-package aminev.util;
+package com.epam.aminev.util;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,7 +1,6 @@
-package aminev.handlers;
+package com.epam.aminev.handlers;
 
-import aminev.util.CommandHandlerException;
-import aminev.util.WrongCommandException;
+import com.epam.aminev.util.CommandHandlerException;
 
 /**
  * The {@code CommandHandler} interface is indicates that implemented

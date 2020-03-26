@@ -1,7 +1,7 @@
-package aminev;
+package com.epam.aminev;
 
-import aminev.handlers.*;
-import aminev.util.WrongCommandException;
+import com.epam.aminev.handlers.*;
+import com.epam.aminev.util.WrongCommandException;
 
 import java.util.HashMap;
 import java.util.Scanner;

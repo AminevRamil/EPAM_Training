@@ -1,4 +1,4 @@
-package aminev.handlers;
+package com.epam.aminev.handlers;
 
 /**
  * The {@code ExitCommand} class handle exit command.

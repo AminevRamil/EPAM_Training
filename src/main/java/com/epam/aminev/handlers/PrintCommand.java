@@ -1,9 +1,9 @@
-package aminev.handlers;
+package com.epam.aminev.handlers;
 
-import aminev.util.CommandHandlerException;
-import aminev.util.MyFilePrinter;
-import aminev.util.MyFileReader;
-import aminev.util.WrongCommandException;
+import com.epam.aminev.util.CommandHandlerException;
+import com.epam.aminev.util.MyFilePrinter;
+import com.epam.aminev.util.MyFileReader;
+import com.epam.aminev.util.WrongCommandException;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;

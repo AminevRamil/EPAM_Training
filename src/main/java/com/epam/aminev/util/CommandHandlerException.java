@@ -1,4 +1,4 @@
-package aminev.util;
+package com.epam.aminev.util;
 
 /**
  * {@code CommandException} indicated that command handler

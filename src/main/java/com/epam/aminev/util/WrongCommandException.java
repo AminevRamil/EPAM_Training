@@ -1,4 +1,4 @@
-package aminev.util;
+package com.epam.aminev.util;
 
 /**
  * {@code WrongCommandException} indicates that {@code Filter}

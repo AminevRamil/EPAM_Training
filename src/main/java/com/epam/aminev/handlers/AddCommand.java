@@ -1,22 +1,21 @@
-package aminev.handlers;
+package com.epam.aminev.handlers;
 
-import aminev.util.CommandHandlerException;
-import aminev.util.MyFileReader;
-import aminev.util.MyFileWriter;
-import aminev.util.WrongCommandException;
+import com.epam.aminev.util.CommandHandlerException;
+import com.epam.aminev.util.MyFileReader;
+import com.epam.aminev.util.MyFileWriter;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * The {@code DeleteCommand} class handle delete command.
- * Remove specified or last line of file, depending on command.
+ * The {@code AddCommand} class handle add command.
+ * Inject line before specified line of file or append to the end, depending on command.
  *
  * @author Aminev Ramil
  * @see CommandHandler
  */
-public class DeleteCommand implements CommandHandler {
+public class AddCommand implements CommandHandler {
     Pattern pattern;
 
     /**
@@ -28,22 +27,26 @@ public class DeleteCommand implements CommandHandler {
      */
     @Override
     public void handle(String command) throws CommandHandlerException {
-        pattern = Pattern.compile("^(delete)( +[\\d]*)? +([\\w]+[\\w.]*)$");
-        if (!pattern.matcher(command).matches()) throw new WrongCommandException("Команда delete написана неверно");
+        pattern = Pattern.compile("^(add)( +[\\d]*)? +([\\w]+[\\w.]*) +(\"[\\w ]*\")?$");
+        if (!pattern.matcher(command).matches()) throw new CommandHandlerException("Команда add написана неверно");
         Scanner scanner = new Scanner(command);
         scanner.next();
-        int lineToDelete = 1;
+        int toLineNumber = 0;
         boolean hasLineNumber = scanner.hasNextInt();
         if (hasLineNumber) {
-            lineToDelete = scanner.nextInt();
+            toLineNumber = scanner.nextInt();
         }
         String fileName = scanner.next();
+        String text = scanner.findInLine("\"[\\w ]*\"");
+        text = text.replace("\"", "");
         List<String> lines = MyFileReader.parseFileToLines(fileName);
         if (hasLineNumber) {
-            if (lineToDelete > lines.size()) throw new CommandHandlerException("Указана строка отсутствующая в файле");
-            lines.remove(lineToDelete - 1);
+            for (int i = lines.size(); i < toLineNumber - 1; i++) {
+                lines.add("");
+            }
+            lines.add(toLineNumber - 1, text);
         } else {
-            lines.remove(lines.size() - 1);
+            lines.add(text);
         }
         MyFileWriter.writeFile(fileName, lines);
     }
