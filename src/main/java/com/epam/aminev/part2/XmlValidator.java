@@ -10,9 +10,21 @@ import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The {@code XmlValidator} class is validate specified
+ * XML-document by specified XSD-scheme
+ */
 @Slf4j
 public class XmlValidator {
+    /**
+     *
+     * @param xsdPath is XSD-scheme source
+     * @param xmlPath is XML-file source
+     * @return true if validation is successful and false if not
+     * @throws NullPointerException in case of one of the paths (or both) is null
+     */
     public boolean validate(String xsdPath, String xmlPath) {
+        if (xsdPath == null || xmlPath == null) throw new NullPointerException("Can't validate null file(s)");
         try {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = factory.newSchema(new File(xsdPath));

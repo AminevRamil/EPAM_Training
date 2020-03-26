@@ -9,13 +9,25 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 
+/**
+ * The {@code MyDomParser} class is parsing  XML file
+ * into logs using DOM model
+ *
+ * @author Aminev Ramil
+ */
 @Slf4j
 public class MyDomParser {
-
-    public void parse(String path) {
+    /**
+     * Method that trying to open specified file
+     * and run recursive processing
+     *
+     * @param fileName of file that need to parse
+     */
+    public void parse(String fileName) {
+        if (fileName == null) throw new NullPointerException("Can't parse null");
         DOMParser domParser = new DOMParser();
         try {
-            domParser.parse(path);
+            domParser.parse(fileName);
         } catch (IOException | SAXException e) {
             log.error(e.getMessage());
             System.exit(-1);
@@ -26,6 +38,12 @@ public class MyDomParser {
         printXML(root);
     }
 
+    /**
+     * Method that print into logs XML header, run
+     * recursive printing and process root's tags
+     *
+     * @param root of XML-document
+     */
     private void printXML(Element root) {
         log.info("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         String tagName = root.getTagName();
@@ -34,6 +52,11 @@ public class MyDomParser {
         log.info(String.format("</%s>", tagName));
     }
 
+    /**
+     * Method that print document elementwise into logs recursively
+     *
+     * @param nodes of parent that will print
+     */
     private void print_recursive(NodeList nodes) {
         for (int i = 0; i < nodes.getLength(); i++) {
             if (nodes.item(i) instanceof Element && nodes.item(i).getChildNodes().getLength() == 1) {
@@ -43,9 +66,9 @@ public class MyDomParser {
             }
             if (nodes.item(i).hasChildNodes() && nodes.item(i).getChildNodes().getLength() > 1) {
                 String tagName = nodes.item(i).getNodeName();
-                log.info(String.format("<%s>",tagName));
+                log.info(String.format("<%s>", tagName));
                 print_recursive(nodes.item(i).getChildNodes());
-                log.info(String.format("</%s>",tagName));
+                log.info(String.format("</%s>", tagName));
             }
         }
     }

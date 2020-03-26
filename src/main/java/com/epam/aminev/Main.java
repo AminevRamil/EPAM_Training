@@ -11,8 +11,18 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.TransformerException;
 import java.io.FileNotFoundException;
 
+/**
+ * Main class which demonstrate understanding of how XML works
+ *
+ * @author Aminev Ramil
+ */
 @Slf4j
 public class Main {
+    /**
+     * Entry point in demo that was did during lesson 6
+     *
+     * @param args - input arguments. Not used
+     */
     public static void main(String[] args) {
         MyDomParser domParser = new MyDomParser();
         domParser.parse("src/main/resources/plant_catalog.xml");
@@ -30,7 +40,7 @@ public class Main {
         }
         XmlValidator validator = new XmlValidator();
         boolean result = validator.validate("src/main/resources/book.xsd", "book_catalog.xml");
-        if (result) System.out.println("Успешная валидация");
-        else System.out.println("Документ не прошёл валидацию");
+        if (result) System.out.println("Successful validation");
+        else System.out.println("Document doesn't pass validation");
     }
 }
