@@ -11,7 +11,7 @@
         </encoder>
     </appender>
     <!-- Логгер для файла-->
-    <logger name="aminev" level="info" additivity="false">
+    <logger name="com.epam.aminev" level="info" additivity="false">
         <appender-ref ref="FILE-AUDIT"/>
     </logger>
 
