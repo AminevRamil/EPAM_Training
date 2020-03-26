@@ -1,9 +1,10 @@
-import aminev.Human;
-import aminev.dto.HumanDto;
-import aminev.exceptions.ConverterException;
-import aminev.exceptions.ServiceException;
-import aminev.services.HumanConverter;
-import aminev.services.Service;
+package com.epam.aminev;
+
+import com.epam.aminev.dto.HumanDto;
+import com.epam.aminev.exceptions.ConverterException;
+import com.epam.aminev.exceptions.ServiceException;
+import com.epam.aminev.services.HumanConverter;
+import com.epam.aminev.services.Service;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 public class Main {
     /**
      * Entry point in logging and exceptions demo that was did during lesson 4
+     *
      * @param args - input arguments. Not used
      */
     public static void main(String[] args) {
@@ -40,12 +42,12 @@ public class Main {
         System.out.println("-----Lesson 4-----\n----Exceptions----");
         try {
             service.getById(11);
-        } catch (ServiceException e){
+        } catch (ServiceException e) {
             log.error(e.getMessage());
         }
         try {
             service.save(null);
-        } catch (ServiceException e){
+        } catch (ServiceException e) {
             log.error(e.getMessage());
         }
         try {

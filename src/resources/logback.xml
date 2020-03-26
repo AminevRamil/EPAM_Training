@@ -17,7 +17,7 @@
         </rollingPolicy>
     </appender>
     <!-- Логгер для файла-->
-    <logger name="aminev.services.Service" level="info" additivity="false">
+    <logger name="com.epam.aminev.services.Service" level="info" additivity="false">
         <appender-ref ref="FILE-AUDIT"/>
     </logger>
 
@@ -30,12 +30,12 @@
         </layout>
     </appender>
     <!-- Логгер для консоли-->
-    <logger name="aminev.services.HumanConverter" level="info" additivity="false">
+    <logger name="com.epam.aminev.services.HumanConverter" level="info" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
 
     <!-- Логгер для файла и консоли-->
-    <logger name="aminev.services.RepositoryImpl" level="debug" additivity="false">
+    <logger name="com.epam.aminev.services.RepositoryImpl" level="debug" additivity="false">
         <appender-ref ref="FILE-AUDIT"/>
         <appender-ref ref="CONSOLE"/>
     </logger>

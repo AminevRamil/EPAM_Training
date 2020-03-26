@@ -1,11 +1,11 @@
-package aminev.services;
+package com.epam.aminev.services;
 
-import aminev.Human;
-import aminev.dto.HumanDto;
+import com.epam.aminev.Human;
+import com.epam.aminev.dto.HumanDto;
 
 import java.util.Collection;
 
-import aminev.exceptions.ServiceException;
+import com.epam.aminev.exceptions.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 
 /**

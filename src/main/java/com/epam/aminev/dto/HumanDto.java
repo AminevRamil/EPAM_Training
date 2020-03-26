@@ -1,4 +1,4 @@
-package aminev.dto;
+package com.epam.aminev.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
  * The {@code HumanDTO} class represents Data Transfer Object for class {@code Human}
  *
  * @author Aminev Ramil
- * @see aminev.Human
+ * @see com.epam.aminev.Human
  */
 @Data
 @AllArgsConstructor

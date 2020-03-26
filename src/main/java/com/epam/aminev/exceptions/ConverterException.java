@@ -1,4 +1,4 @@
-package aminev.exceptions;
+package com.epam.aminev.exceptions;
 
 /**
  * {@code ConverterException} could be thrown to indicate that

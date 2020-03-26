@@ -1,4 +1,4 @@
-package aminev;
+package com.epam.aminev;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

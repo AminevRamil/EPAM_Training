@@ -1,11 +1,10 @@
-package aminev.services;
+package com.epam.aminev.services;
 
-import aminev.Human;
+import com.epam.aminev.Human;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * The {@code RepositoryImpl} is a implementation of a {@code Repository} interface

@@ -1,6 +1,6 @@
-package aminev.services;
+package com.epam.aminev.services;
 
-import aminev.Human;
+import com.epam.aminev.Human;
 
 import java.util.Collection;
 

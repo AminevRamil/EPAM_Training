@@ -1,16 +1,15 @@
-package aminev.services;
+package com.epam.aminev.services;
 
-import aminev.Human;
-import aminev.dto.AddressDto;
-import aminev.exceptions.ConverterException;
-import lombok.extern.slf4j.Slf4j;
+import com.epam.aminev.Human;
+import com.epam.aminev.dto.AddressDto;
+import com.epam.aminev.exceptions.ConverterException;
 
 /**
  * The {@code AddressConverter} class is used to
  * convert Address and AddressDto in both directions
  *
  * @author Aminev Ramil
- * @see aminev.Human.Address
+ * @see com.epam.aminev.Human.Address
  * @see AddressDto
  */
 public class AddressConverter {

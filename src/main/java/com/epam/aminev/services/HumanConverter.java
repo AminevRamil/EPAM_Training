@@ -1,9 +1,9 @@
-package aminev.services;
+package com.epam.aminev.services;
 
-import aminev.Human;
-import aminev.dto.AddressDto;
-import aminev.dto.HumanDto;
-import aminev.exceptions.ConverterException;
+import com.epam.aminev.Human;
+import com.epam.aminev.dto.AddressDto;
+import com.epam.aminev.dto.HumanDto;
+import com.epam.aminev.exceptions.ConverterException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
