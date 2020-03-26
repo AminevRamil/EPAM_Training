@@ -1,11 +1,18 @@
 package aminev.handlers;
 
-import aminev.util.CommandException;
-import aminev.util.WrongCommandException;
-
+/**
+ * The {@code ExitCommand} class handle exit command.
+ *
+ * @author Aminev Ramil
+ * @see CommandHandler
+ */
 public class ExitCommand implements CommandHandler {
+
+    /**
+     * Simple escape method that stops application
+     */
     @Override
-    public void handle(String command) throws WrongCommandException {
+    public void handle(String command) {
         System.exit(0);
     }
 }
