@@ -9,12 +9,25 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+ * The {@code MyStAXParser} class is parsing  XML file
+ * into logs using StAX API
+ *
+ * @author Aminev Ramil
+ */
 @Slf4j
 public class MyStAXParser {
 
-    public void parse(String path) throws FileNotFoundException, XMLStreamException {
+    /**
+     * Method that trying to open specified file
+     * and run serial processing
+     *
+     * @param fileName of file that need to parse
+     */
+    public void parse(String fileName) throws FileNotFoundException, XMLStreamException {
+        if (fileName == null) throw new NullPointerException("Can't parse null");
         XMLInputFactory factory = XMLInputFactory.newFactory();
-        XMLStreamReader reader = factory.createXMLStreamReader(new FileInputStream(path));
+        XMLStreamReader reader = factory.createXMLStreamReader(new FileInputStream(fileName));
 
         while (reader.hasNext()) {
             reader.next();
