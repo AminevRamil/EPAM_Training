@@ -101,14 +101,17 @@ public class ProxyService implements ClientApi {
     }
 
     /**
-     * 
-     * @return
+     * Need to MyIterator work
+     * @return set of cached id
      */
     public Set<Integer> getCachedId() {
         return this.cache.keySet();
     }
 
-
+    /**
+     * Need to MyIterator work
+     * @return set of id in repository
+     */
     Set<Integer> getIdSet() {
         return repository.getIdSet();
     }

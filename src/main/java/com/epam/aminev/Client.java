@@ -4,11 +4,18 @@ import com.epam.aminev.behavioral.MyIterator;
 import com.epam.aminev.structural.proxy.ClientApi;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Client imitator
+ */
 @Slf4j
 public class Client {
     private ClientApi repo;
     MyIterator iterator;
 
+    /**
+     * Configuration method that set concrete repository to work with
+     * @param service
+     */
     public void configure(ClientApi service){
         this.repo = service;
     }
@@ -22,6 +29,9 @@ public class Client {
         repo.getById(id);
     }
 
+    /**
+     * Demo of how MyIterator works
+     */
     public void bypassRequest(){
         iterator = repo.iterator();
         while (iterator.hasNext()) {
