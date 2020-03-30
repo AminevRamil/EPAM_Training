@@ -1,8 +1,7 @@
 package com.epam.aminev;
 
-import com.epam.aminev.structural.ComplexNumber;
-import com.epam.aminev.structural.proxyexample.Client;
-import com.epam.aminev.structural.proxyexample.ProxyService;
+import com.epam.aminev.structural.decorator.ComplexNumber;
+import com.epam.aminev.structural.proxy.ProxyService;
 
 /**
  * Main class that demonstrate understanding of design patterns
@@ -26,6 +25,7 @@ public class Main {
         System.out.println("Прокси на примере кэшируемого репозитория:");
         Client client = new Client();
         client.configure(new ProxyService());
-        for (int i = 0; i < 5; i++) client.makeDummyRequest();
+        for (int i = 0; i < 5; i++) client.makeRequest();
+        client.bypassRequest();
     }
 }

@@ -1,6 +1,5 @@
-package com.epam.aminev.structural;
+package com.epam.aminev.structural.decorator;
 
-import java.util.Objects;
 
 /**
  * The {@code ComplexNumber} class is DeCoRaTe working with
