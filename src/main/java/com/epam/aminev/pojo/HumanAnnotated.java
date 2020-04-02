@@ -3,6 +3,11 @@ package com.epam.aminev.pojo;
 import com.epam.aminev.annotations.Entity;
 import com.epam.aminev.annotations.Value;
 
+/**
+ * The {@code Human} class represents POJO entity with annotations
+ *
+ * @author Aminev Ramil
+ */
 @Entity
 public class HumanAnnotated {
     @Value()
@@ -16,7 +21,7 @@ public class HumanAnnotated {
         this.name = name;
     }
 
-    public HumanAnnotated(){
+    public HumanAnnotated() {
 
     }
 

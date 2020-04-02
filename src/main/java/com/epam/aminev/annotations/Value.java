@@ -15,6 +15,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Value {
+
     String strValue() default "default value";
 
     int intValue() default -1;
