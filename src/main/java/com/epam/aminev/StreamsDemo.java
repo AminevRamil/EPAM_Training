@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -60,12 +61,10 @@ public class StreamsDemo {
     public void countUuid(String fileName) {
         Path path = Paths.get(fileName);
         try {
-            counter = Files.readAllLines(path)
-                    .stream()
+            counter = Files.lines(path)
                     .filter(line -> line.length() > 0)
                     .filter(uuid -> sumOfDigits(uuid) > 100)
                     .count();
-            System.out.println(counter);
             log.info("Count: {}", counter);
         } catch (IOException e) {
             e.printStackTrace();
@@ -79,7 +78,7 @@ public class StreamsDemo {
      * @return sum of digits
      */
     private int sumOfDigits(String uuid) {
-        return uuid.chars().filter(value -> value >= '0' && value <= '9').boxed().mapToInt(i -> i - 48).sum();
+        return uuid.chars().filter(value -> value >= '0' && value <= '9').map(c -> c - 48).sum();
     }
 
     /**
@@ -98,21 +97,31 @@ public class StreamsDemo {
     }
 
     /**
-     * 1
+     * Reads data about sausages and creates instances of {@code Sausage}
+     * Do it using Streams API
      *
-     * @param fileName 2
+     * @param fileName of file with data
      */
-    public void readSausageData(String fileName) {
+    public Optional<List<Sausage>> readSausageData(String fileName) {
         Path path = Paths.get(fileName);
         Base64.Decoder decoder = Base64.getDecoder();
+        List<Sausage> sausageList = null;
         try {
-            Files.readAllLines(path)
+            sausageList = Files.readAllLines(path)
                     .stream()
                     .map(decoder::decode)
                     .map(String::new)
-                    .forEach(System.out::println);
+                    .map(line -> line
+                            .replace("type=", "")
+                            .replace("weight=", "")
+                            .replace("cost=", "")
+                            .replaceAll("'", "")
+                            .replaceAll(",", " "))
+                    .map(Sausage::new)
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             log.error(e.getMessage());
         }
+        return sausageList != null? Optional.of(sausageList): Optional.empty();
     }
 }

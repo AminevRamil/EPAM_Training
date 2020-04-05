@@ -12,10 +12,6 @@
         </encoder>
     </appender>
 
-    <logger name="com.epam.aminev" level="warn" additivity="false">
-        <appender-ref ref="FILE-AUDIT"/>
-    </logger>
-
     <!-- Аппендер для консоли-->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -25,7 +21,13 @@
         </layout>
     </appender>
 
-    <root level="debug">
+    <logger name="com.epam.aminev" level="debug" additivity="false">
+        <appender-ref ref="FILE-AUDIT"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+
+    <root level="error">
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>

@@ -1,14 +1,18 @@
 package com.epam.aminev;
 
+import java.util.Scanner;
+
 public class Sausage {
     String type;
     int weight;
     long cost;
 
-    public Sausage(String type, int weight, long cost) {
-        this.type = type;
-        this.weight = weight;
-        this.cost = cost;
+    public Sausage(String parameters) {
+        Scanner scanner = new Scanner(parameters);
+
+        this.type = scanner.next();
+        this.weight = scanner.nextInt();
+        this.cost = scanner.nextInt();
     }
 
     public String getType() {
