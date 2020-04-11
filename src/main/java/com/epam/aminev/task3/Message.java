@@ -1,18 +1,34 @@
 package com.epam.aminev.task3;
 
+/**
+ * Message object with which chat works and which
+ * readers, writers and updaters operate
+ *
+ * @author Aminev Ramil
+ */
 public class Message {
     public static int messageCounter = 0;
     private int id;
     private String message;
     private int basedOn = -1;
 
-    public Message(String message){
+    /**
+     * Construct basic Message instance with unique id
+     *
+     * @param message that was constructed
+     */
+    public Message(String message) {
         id = messageCounter;
         messageCounter++;
         this.message = message;
     }
 
-    public Message(Message instance){
+    /**
+     * Construct new Message instance based on given Message
+     *
+     * @param instance of Message
+     */
+    public Message(Message instance) {
         id = messageCounter;
         messageCounter++;
         basedOn = instance.id;

@@ -6,25 +6,48 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Random;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * The {@code SmsWriter} class is write message
+ * to chat and them idle for 20-60 seconds
+ *
+ * @author Aminev Ramil
+ */
 @Slf4j
 public class SmsWriter extends AbstractClient implements Callable<Message> {
+
+    /**
+     * Basic constructor that delegates
+     * construction to it's superclass
+     *
+     * @param chat from which reader will pull messages
+     */
     public SmsWriter(ChatService chat) {
-        super(chat, ClientType.WRITER);
+        super(chat);
     }
 
+    /**
+     * Write random generated message and send it to chat.
+     * At the same time log it, and them idle
+     *
+     * @return updated message
+     * @throws InterruptedException in case of interrupting while thread is sleeping
+     */
     @Override
     public Message call() throws Exception {
         Message message = generateMessage();
         log.info("Writer from {} generate message: {}", Thread.currentThread().getName(), message);
-        long idleTimeInMillis = (long) ((Math.random() * 20 + 40) * 1000 / 10);
+        long idleTimeInMillis = (long) ((Math.random() * 40 + 20) * 1000);
         log.warn("Writer from {} will idle for {}s.", Thread.currentThread().getName(), idleTimeInMillis / 1000);
         Thread.sleep(idleTimeInMillis);
         return message;
     }
 
-
+    /**
+     * Method that generate random message using streams
+     *
+     * @return randomly generated Message
+     */
     private Message generateMessage() {
         Random random = new Random();
         int stringLength = random.nextInt(10) + 3;

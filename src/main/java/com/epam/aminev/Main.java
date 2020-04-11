@@ -10,12 +10,26 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
+/**
+ * Main class that demonstrate how Java Concurrency API works
+ *
+ * @author Aminev Ramil
+ */
 public class Main {
 
     private final static int N = 2;
     private final static int M = 2;
     private final static int K = 2;
 
+    /**
+     * Main entry point to chat demonstration that was did during lesson 12
+     * It create list of client of:
+     * N SmsWriters
+     * M SmsReaders
+     * K SmsUpdaters
+     *
+     * @param args - input arguments. Not used
+     */
     public static void main(String[] args) {
         ChatService chatService = new ChatService();
         List<AbstractClient> clientList = new ArrayList<>(N + M + K);
@@ -31,7 +45,7 @@ public class Main {
         chatService.addClients(clientList);
         try {
             chatService.startChat();
-        } catch (ConcurrentModificationException e){
+        } catch (ConcurrentModificationException e) {
             e.printStackTrace();
             System.exit(-1);
         }

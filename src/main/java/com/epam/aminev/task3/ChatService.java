@@ -13,6 +13,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+/**
+ * The {@code ChatService} class is simulates chat with
+ * some writers, updaters and readers
+ * <p>
+ * IMPORTANT: Not work
+ *
+ * @author Aminev Ramil
+ */
 @Slf4j
 public class ChatService {
     private final int MESSAGES_MAX = 25;
@@ -24,11 +32,20 @@ public class ChatService {
 
     private ExecutorService executorService;
 
-
+    /**
+     * Basic constructor that construct new instance of {@code ChatService}
+     * and initialize messageList
+     */
     public ChatService() {
-        messageList = Collections.synchronizedList(new LinkedList<>());;
+        messageList = Collections.synchronizedList(new LinkedList<>());
+
     }
 
+    /**
+     * Method which configure chat with clients and their's FutureTasks
+     *
+     * @param clients that will use chat's services
+     */
     public void addClients(List<AbstractClient> clients) {
         assert (clients != null && !clients.isEmpty());
 
@@ -54,16 +71,26 @@ public class ChatService {
         }
     }
 
+    /**
+     * Method that start chat work and checking client's futures
+     */
     public void startChat() {
         while (true) {
             try {
                 checkFutures();
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             }
         }
     }
 
+    /**
+     * Checks client's futures and suppose to resend
+     * client's future task's but not do it
+     *
+     * @throws ExecutionException   in case of trouble with executorService
+     * @throws InterruptedException in case of interruption of sleeping thread
+     */
     private void checkFutures() throws ExecutionException, InterruptedException {
         for (Future<Message> task : writersFutures) {
             if (!task.isDone()) {
@@ -95,6 +122,11 @@ public class ChatService {
         }
     }
 
+    /**
+     * Add message to messageList
+     *
+     * @param message that to be added
+     */
     public void addMessage(Message message) {
         synchronized (messageList) {
             if (messageList.size() < MESSAGES_MAX) {
@@ -105,6 +137,11 @@ public class ChatService {
         }
     }
 
+    /**
+     * Pull first message from messageList
+     *
+     * @return pulled message
+     */
     public Message pullMessage() {
         synchronized (messageList) {
             if (!messageList.isEmpty()) {
@@ -118,6 +155,12 @@ public class ChatService {
         }
     }
 
+    /**
+     * Returns random message form messageList
+     * without pulling it
+     *
+     * @return random message
+     */
     public Message getRandomMessage() {
         if (!messageList.isEmpty()) {
             return messageList.get((int) (Math.random() * messageList.size()));
@@ -126,6 +169,11 @@ public class ChatService {
         }
     }
 
+    /**
+     * Replacing old message with new one that was got from updater
+     *
+     * @param updatedMessage is a new message that replace older one
+     */
     public void updateMessage(Message updatedMessage) {
         synchronized (messageList) {
             for (int i = 0; i < messageList.size(); i++) {

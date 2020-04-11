@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
     <!-- Аппендер для логирования в файл-->
-    <appender name="CHAT-AUDIT" class="ch.qos.logback.core.FileAppender">
-        <file>logs\chat.log</file>
+    <appender name="FILE-AUDIT" class="ch.qos.logback.core.FileAppender">
+        <file>logs\lesson12.log</file>
         <append>false</append>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
@@ -22,9 +21,9 @@
         </layout>
     </appender>
 
-    <logger name="com.epam.aminev.task3" level="debug" additivity="false">
-        <appender-ref ref="CHAT_AUDIT"/>
+    <logger name="com.epam.aminev" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_AUDIT"/>
     </logger>
 
 
