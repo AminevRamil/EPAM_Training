@@ -3,6 +3,7 @@ package com.epam.aminev;
 /**
  * Main class.
  */
+
 public final class Main {
     /**
      * Entry point to application.
